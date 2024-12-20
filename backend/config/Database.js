@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 const port = process.env.NODE_PORT;
 const dbName = process.env.DATABASE_NAME;

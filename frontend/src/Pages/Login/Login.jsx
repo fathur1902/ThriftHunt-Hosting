@@ -21,7 +21,7 @@ export function Login() {
       try {
         // Kirim data login ke backend
         const response = await axios.post(
-          import.meta.env.VITE_API_URL + '/login',
+          import.meta.env.VITE_API_URL + "/user/login",
           {
             email,
             password,
@@ -85,7 +85,7 @@ export function Login() {
                 />
               </div>
             </div>
-  
+
             {/* Right Box */}
             <div className="col-md-6 right-box">
               <div className="row align-items-center">
@@ -103,7 +103,7 @@ export function Login() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-  
+
                 <small className="text-black">Masukkan sandi</small>
                 <div className="input-group mb-3">
                   <input
@@ -115,7 +115,7 @@ export function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-  
+
                 <div className="input-group mb-3 d-flex justify-content-between">
                   <div className="form-check">
                     <input
@@ -138,7 +138,7 @@ export function Login() {
                     </small>
                   </div>
                 </div>
-  
+
                 <div className="input-group mb-3">
                   <button
                     className="btn btn-lg btn-primary w-100 fs-6"
@@ -159,4 +159,4 @@ export function Login() {
       </div>
     </>
   );
-}  
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import "./Signup.css";
+import "./SignUp.css";
 
 export function Signup() {
   const [formData, setFormData] = useState({
@@ -50,7 +50,7 @@ export function Signup() {
   const submitForm = async () => {
     try {
       const response = await axios.post(
-        import.meta.env.VITE_API_URL + '/register',
+        import.meta.env.VITE_API_URL + "/api/users/register",
         formData
       );
 
@@ -112,7 +112,7 @@ export function Signup() {
               />
             </div>
           </div>
-  
+
           {/* Right Box */}
           <div className="col-md-6 right-box d-flex flex-column justify-content-center">
             <div className="row align-items-center">
@@ -212,5 +212,5 @@ export function Signup() {
         </div>
       </div>
     </div>
-  );  
+  );
 }

@@ -15,8 +15,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/profile", authenticateJWT, getProfile);
 router.post("/profile", authenticateJWT, updateProfile);
-router.put("/address",updateAddress);
-router.get("/address/:id",getUserAddress);
-
+router.put("/address", updateAddress);
+router.get("/address/:id", getUserAddress);
 
 export default router;

@@ -6,7 +6,7 @@ import cors from "cors";
 import ProductRoutes from "./routes/ProductRoutes.js";
 import UsersRouter from "./routes/UsersRouter.js";
 import CartRoutes from "./routes/CartRoutes.js";
-import CheckoutRoutes from "./routes/CheckoutRoutes.js"
+import CheckoutRoutes from "./routes/CheckoutRoutes.js";
 
 dotenv.config();
 
@@ -25,6 +25,9 @@ app.use("/api/users", UsersRouter);
 app.use("/api/cart", CartRoutes);
 app.use("/api/checkout", CheckoutRoutes);
 app.use("/api", ProductRoutes);
+app.get("/testing", (r, s) => {
+  s.status(200).json({ hello: "hello" });
+});
 
-const PORT = 3013
+const PORT = 3013;
 app.listen(PORT, () => console.log("Server running at port ", PORT));
