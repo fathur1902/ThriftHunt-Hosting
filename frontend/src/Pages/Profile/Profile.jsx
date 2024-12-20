@@ -20,7 +20,7 @@ export function Profile() {
         }
 
         const response = await axios.get(
-          import.meta.env.VITE_API_URL + "/users/profile",
+          import.meta.env.VITE_API_URL + "api/users/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
