@@ -37,7 +37,7 @@ export function EditProfile() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:3000/api/users/profile",
+        import.meta.env.VITE_API_URL + '/api/users/profile',
         payload,
         {
           headers: {

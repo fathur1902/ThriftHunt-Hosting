@@ -22,7 +22,7 @@ export function Navbar() {
     const fetchCartCount = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:3000/api/cart", {
+        const response = await axios.get( import.meta.env.VITE_API_URL +'cart', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

@@ -18,7 +18,7 @@ export function Dashboard() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/products");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
         setProducts(response.data);
       } catch (error) {
         console.error("Gagal memuat data produk:", error);
@@ -30,7 +30,7 @@ export function Dashboard() {
   // Fungsi untuk menghapus produk
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/products/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
       setProducts(products.filter((product) => product.id !== id));
     } catch (error) {
       console.error("Gagal menghapus produk:", error);
@@ -127,7 +127,7 @@ export function Dashboard() {
                     <td>
                       <div className="d-flex align-items-center">
                         <img
-                          src={`http://localhost:3000/uploads/${product.image}`}
+                          src={`${import.meta.env.VITE_API_URL}/uploads/${product.image}`}
                           alt={product.name}
                           className="rounded-circle me-3"
                           width="50"

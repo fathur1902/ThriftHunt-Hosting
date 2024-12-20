@@ -22,7 +22,7 @@ export function EditP() {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/products/${id}`
+          `${import.meta.env.VITE_API_URL}/api/products/${id}`
         );
         const product = response.data;
 
@@ -69,7 +69,7 @@ export function EditP() {
     formData.append("category", category);
 
     try {
-      await axios.patch(`http://localhost:3000/api/products/${id}`, formData, {
+      await axios.patch(`${import.meta.env.VITE_API_URL}/api/products/${id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Produk berhasil diperbarui!");
@@ -196,7 +196,7 @@ export function EditP() {
                   <div className="mt-3 text-center">
                     <p>Gambar saat ini:</p>
                     <img
-                      src={`http://localhost:3000/uploads/${existingImage}`}
+                      src={`${import.meta.env.VITE_API_URL}/uploads/${existingImage}`}
                       alt="Gambar Produk"
                       style={{
                         width: "70%",

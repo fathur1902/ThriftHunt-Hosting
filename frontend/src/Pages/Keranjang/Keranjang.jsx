@@ -12,7 +12,7 @@ export function Keranjang() {
     const fetchCartProducts = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.get("http://localhost:3000/api/cart", {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -38,7 +38,7 @@ export function Keranjang() {
     const token = localStorage.getItem("token");
     try {
       await axios.put(
-        `http://localhost:3000/api/cart/${id}`,
+        import.meta.env.VITE_API_URL + `/api/cart/${id}`,
         { quantity: newQuantity }, 
         {
           headers: {
@@ -59,7 +59,7 @@ export function Keranjang() {
   const handleRemoveProduct = async (id) => {
     const token = localStorage.getItem("token"); 
     try {
-      await axios.delete(`http://localhost:3000/api/cart/${id}`, {
+      await axios.delete(import.meta.env.VITE_API_URL + `/api/cart/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,  
         },
@@ -127,7 +127,7 @@ export function Keranjang() {
                 <td>
                   <div className="d-flex align-items-center">
                     <img
-                      src={`http://localhost:3000/uploads/${cartItem.Product.image}`}
+                      src={`${import.meta.env.VITE_API_URL}/uploads/${cartItem.Product.image}`}
                       alt={cartItem.Product.name}
                       width="50"
                       height="50"
