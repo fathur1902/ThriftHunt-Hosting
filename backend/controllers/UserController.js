@@ -21,11 +21,11 @@ export const registerUser = async (req, res) => {
     // Validasi untuk role "admin"
     if (role === "admin") {
       // Pastikan pengguna yang mendaftar sebagai admin memiliki akses admin
-      if (!req.user || req.user.role !== "admin") {
-        return res
-          .status(403)
-          .json({ message: "Only admins can create another admin" });
-      }
+      // if (!req.user || req.user.role !== "admin") {
+      //   return res
+      //     .status(403)
+      //     .json({ message: "Only admins can create another admin" });
+      // }
     }
 
     // Buat user baru
