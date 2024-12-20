@@ -10,7 +10,7 @@ export const Selesai = () => {
   const fetchCheckoutData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/checkout/checkout",
+        `${import.meta.env.VITE_API_URL}/api/checkout/checkout`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -81,7 +81,7 @@ export const Selesai = () => {
           cartItems.map((item) => (
             <div className="product-row" key={item.id}>
               <img
-                src={`http://localhost:3000/uploads/${item.Product.image}`}
+                src={`${import.meta.env.VITE_API_URL}/uploads/${item.Product.image}`}
                 alt={item.Product.name}
                 className="product-img"
               />

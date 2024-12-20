@@ -12,7 +12,7 @@ export function DashboardP() {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/checkout/admin/checkout",
+        `${import.meta.env.VITE_API_URL}/api/checkout/admin/checkout`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,7 +37,7 @@ export function DashboardP() {
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
       await axios.patch(
-        `http://localhost:3000/api/checkout/checkout/${orderId}`,
+        `${import.meta.env.VITE_API_URL}/api/checkout/checkout/${orderId}`,
         { status: newStatus },
         {
           headers: {

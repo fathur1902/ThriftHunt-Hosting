@@ -24,7 +24,7 @@ export const UbahAlamat = () => {
     try {
       console.log("Fetching address for userId:", userId);
       const response = await axios.get(
-        `http://localhost:3000/api/users/address/${userId}`
+        `${import.meta.env.VITE_API_URL}/api/users/address/${userId}`
       );
       console.log("Response data:", response.data);
       setFormData(response.data);
@@ -43,7 +43,7 @@ export const UbahAlamat = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:3000/api/users/address",
+        `${import.meta.env.VITE_API_URL}/api/users/address`,
         {
           userId,
           ...formData,

@@ -26,4 +26,5 @@ app.use("/api/cart", CartRoutes);
 app.use("/api/checkout", CheckoutRoutes);
 app.use("/api", ProductRoutes);
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+const PORT = 3013
+app.listen(PORT, () => console.log("Server running at port ", PORT));

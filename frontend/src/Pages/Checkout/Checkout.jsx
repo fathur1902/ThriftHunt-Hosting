@@ -17,7 +17,7 @@ export function Checkout() {
     const fetchCheckoutData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/checkout/checkout",
+          `${import.meta.env.VITE_API_URL}/api/checkout/checkout`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
