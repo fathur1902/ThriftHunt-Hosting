@@ -21,7 +21,7 @@ export function Login() {
       try {
         // Kirim data login ke backend
         const response = await axios.post(
-          import.meta.env.VITE_API_URL + "/user/login",
+          import.meta.env.VITE_API_URL + "/api/users/login",
           {
             email,
             password,
