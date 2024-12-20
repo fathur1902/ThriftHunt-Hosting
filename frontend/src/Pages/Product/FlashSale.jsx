@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Tambahkan axios untuk melakukan HTTP request
+import axios from "axios";
 import "./Product.css";
 
 export function FlashSale() {
@@ -15,7 +15,9 @@ export function FlashSale() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/products"); // Ubah URL ke endpoint backend Anda
+        const response = await axios.get(
+          import.meta.env.VITE_API_URL + "/api/products"
+        ); // Gunakan VITE_API_URL
         const flashSaleProducts = response.data.filter(
           (product) => product.category === "FlashSale"
         );
@@ -53,11 +55,12 @@ export function FlashSale() {
       "0"
     )}:${String(sec).padStart(2, "0")}`;
   };
+
   const handleAddToCart = async (product) => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/cart",
+        import.meta.env.VITE_API_URL + "/api/cart", // Gunakan VITE_API_URL
         {
           productId: product.id,
           quantity: 1,
@@ -102,7 +105,9 @@ export function FlashSale() {
             <div key={product.id} className="col-6 col-md-4 col-lg-3 mb-4">
               <div className="card product-card">
                 <img
-                  src={`http://localhost:3000/uploads/${product.image}`}
+                  src={
+                    import.meta.env.VITE_API_URL + "/uploads/" + product.image
+                  } // Gunakan VITE_API_URL
                   className="card-img-top img-fluid"
                   alt={product.name}
                 />

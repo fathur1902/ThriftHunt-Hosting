@@ -7,7 +7,7 @@ export function Profile() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [newProfileImage, setNewProfileImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null); 
+  const [previewImage, setPreviewImage] = useState(null);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -20,7 +20,7 @@ export function Profile() {
         }
 
         const response = await axios.get(
-          "http://localhost:3000/api/users/profile",
+          import.meta.env.VITE_API_URL + "/users/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -43,7 +43,7 @@ export function Profile() {
     const file = event.target.files[0];
     if (file) {
       setNewProfileImage(file);
-      setPreviewImage(URL.createObjectURL(file)); 
+      setPreviewImage(URL.createObjectURL(file));
     }
   };
 
@@ -55,7 +55,7 @@ export function Profile() {
 
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/users/profile",
+          import.meta.env.VITE_API_URL + "/users/profile",
           formData,
           {
             headers: {
@@ -66,10 +66,10 @@ export function Profile() {
         );
         setUserData({
           ...userData,
-          profileImage: response.data.profileImage, 
+          profileImage: response.data.profileImage,
         });
         setNewProfileImage(null);
-        setPreviewImage(null); 
+        setPreviewImage(null);
       } catch (err) {
         console.error(err);
         setError("Gagal mengubah gambar profil.");
@@ -99,9 +99,9 @@ export function Profile() {
                 <img
                   src={
                     previewImage
-                      ? previewImage 
+                      ? previewImage
                       : userData.profileImage
-                      ? "http://localhost:3000" + userData.profileImage
+                      ? import.meta.env.VITE_API_URL + userData.profileImage
                       : "/assets/images/profiledefault.jpg"
                   }
                   alt="Profile Picture"
@@ -152,11 +152,8 @@ export function Profile() {
               >
                 Edit Profil
               </a>
-              <a
-                href="/selesai"
-                className="btn-profile edit-btn text-center"
-              >
-               Riwayat Pesanan
+              <a href="/selesai" className="btn-profile edit-btn text-center">
+                Riwayat Pesanan
               </a>
               <a href="/login" className="btn-profile logout-btn">
                 Keluar
