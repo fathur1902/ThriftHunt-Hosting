@@ -14,7 +14,7 @@ export function ProductDetail() {
   // Fetch data produk utama berdasarkan ID
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/products/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then((response) => {
         setProduct(response.data);
       })
@@ -26,7 +26,7 @@ export function ProductDetail() {
   // Fetch data produk serupa (mengambil data dari semua produk lalu menyaringnya)
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/products")
+      .get(`${import.meta.env.VITE_API_URL}/api/products`)
       .then((response) => {
         if (product) {
           const related = response.data.filter(
@@ -43,11 +43,12 @@ export function ProductDetail() {
   if (!product) {
     return <div className="text-center my-5">Produk tidak ditemukan</div>;
   }
+
   const handleAddToCart = async (product) => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/cart",
+        `${import.meta.env.VITE_API_URL}/api/cart`,
         {
           productId: product.id,
           quantity: 1,
@@ -82,7 +83,7 @@ export function ProductDetail() {
         <div className="col-lg-3 col-md-4 d-none d-md-block">
           <div className="d-flex flex-column gap-2 thumbnail-scroll">
             <img
-              src={`http://localhost:3000/uploads/${product.image}`}
+              src={`${import.meta.env.VITE_API_URL}/uploads/${product.image}`}
               alt={`Thumbnail of ${product.name}`}
               className="img-fluid rounded"
             />
@@ -92,7 +93,7 @@ export function ProductDetail() {
         {/* Main Product Image */}
         <div className="col-lg-6 col-md-8">
           <img
-            src={`http://localhost:3000/uploads/${product.image}`}
+            src={`${import.meta.env.VITE_API_URL}/uploads/${product.image}`}
             alt={`Main view of ${product.name}`}
             className="product-image img-fluid rounded"
           />
@@ -128,53 +129,6 @@ export function ProductDetail() {
         </div>
       </div>
 
-      {/* <div className="reviews-section mt-5">
-        <h2 className="fs-5 mb-4">Ulasan Pembeli</h2>
-        <div className="review-list mb-4">
-          <div className="review-item mb-3 p-3 rounded">
-            <div className="d-flex justify-content-between">
-              <h5 className="mb-0">Adi Wibowo</h5>
-              <div className="text-warning">★★★★★</div>
-            </div>
-            <p className="mb-1">
-              Produk sangat keren! Warna sesuai dengan foto dan kualitasnya
-              sangat bagus.
-            </p>
-            <small className="text-muted">5 menit yang lalu</small>
-          </div>
-          <div className="review-item mb-3 p-3 rounded">
-            <div className="d-flex justify-content-between">
-              <h5 className="mb-0">Novi Lestari</h5>
-              <div className="text-warning">★★★★☆</div>
-            </div>
-            <p className="mb-1">Barang oke, hanya saja pengiriman agak lama.</p>
-            <small className="text-muted">2 hari yang lalu</small>
-          </div>
-          <div className="review-item mb-3 p-3 rounded">
-            <div className="d-flex justify-content-between">
-              <h5 className="mb-0">Rico Mardian</h5>
-              <div className="text-warning">★★★★★</div>
-            </div>
-            <p className="mb-1">
-              Luar biasa, pengemasan sangat rapi dan barang sesuai deskripsi!
-            </p>
-            <small className="text-muted">3 hari yang lalu</small>
-          </div>
-        </div>
-        <div className="review-form">
-          <textarea
-            className="form-control mb-2"
-            placeholder="Tulis ulasan Anda..."
-          ></textarea>
-          <div className="d-flex justify-content-between">
-            <div className="rating-stars">
-              <span className="text-warning">★★★★★</span>
-            </div>
-            <button className="btn btn-primary">Kirim Ulasan</button>
-          </div>
-        </div>
-      </div> */}
-
       {/* Related Products Section */}
       <div className="related-products mt-5">
         <h2 className="fs-5 mb-4">Pilihan Lainnya</h2>
@@ -187,7 +141,9 @@ export function ProductDetail() {
                   className="product-item text-center text-decoration-none"
                 >
                   <img
-                    src={`http://localhost:3000/uploads/${relatedProduct.image}`}
+                    src={`${import.meta.env.VITE_API_URL}/uploads/${
+                      relatedProduct.image
+                    }`}
                     alt={relatedProduct.name}
                     className="img-fluid rounded mb-2"
                   />

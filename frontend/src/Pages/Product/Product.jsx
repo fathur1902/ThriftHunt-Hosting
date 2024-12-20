@@ -21,7 +21,9 @@ export function Product() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/products");
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/products`
+        );
         setProducts(response.data);
         setFilteredProducts(response.data); // Awalnya tampilkan semua produk
       } catch (err) {
@@ -54,7 +56,7 @@ export function Product() {
     const token = localStorage.getItem("token");
     try {
       await axios.post(
-        "http://localhost:3000/api/cart",
+        `${import.meta.env.VITE_API_URL}/api/cart`,
         {
           productId: product.id,
           quantity: 1,
@@ -208,7 +210,9 @@ export function Product() {
                   <div className="card product-card">
                     <Link to={`/product/${product.id}`}>
                       <img
-                        src={`http://localhost:3000/uploads/${product.image}`}
+                        src={`${import.meta.env.VITE_API_URL}/uploads/${
+                          product.image
+                        }`}
                         className="card-img-top"
                         alt={product.name}
                       />
